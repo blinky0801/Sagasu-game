@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sagasu / Pocket Companion</title>
+  <link rel="icon" href="../icon.png">
+  <link rel="stylesheet" href="care.css">
+  <link rel="stylesheet" href="playful.css">
+  <link rel="stylesheet" href="artist-art.css">
+  <link rel="stylesheet" href="cloud-account.css">
+  <link rel="stylesheet" href="leaderboard.css">
+  <link rel="stylesheet" href="startup.css">
+  <link rel="stylesheet" href="illustrator-ui.css">
+  <link rel="stylesheet" href="lobby.css">
+  <link rel="stylesheet" href="gameplay-icons.css">
+  <link rel="stylesheet" href="lobby-buttons.css">
+  <link rel="stylesheet" href="mobile-landscape.css">
+  <link rel="stylesheet" href="wallet-connect.css">
+  <script src="assets/lucide.min.js" defer></script>
+  <script src="mobile-landscape.js" defer></script>
+  <script src="artist-animation.js" defer></script>
+  <script src="care-audio.js" defer></script>
+  <script src="care.js" defer></script>
+  <script src="cloud-config.js" defer></script>
+  <script src="assets/supabase.js" defer></script>
+  <script src="token-balance.js" defer></script>
+  <script src="progress-sync.js" defer></script>
+  <script src="leaderboard.js" defer></script>
+  <script src="player-profile.js" defer></script>
+  <script src="assets/wallet-connect.js?v=4" defer></script>
+  <script src="cloud-account.js" defer></script>
+  <script src="shower-water.js" defer></script>
+  <script src="opening-voice.js" defer></script>
+  <script src="startup.js" defer></script>
+  <script src="lobby.js" defer></script>
+  <script src="quit-game.js" defer></script>
+</head>
+<body class="booting">
+  <section id="orientation-gate" hidden aria-labelledby="orientation-title">
+    <img src="assets/ui/sagasu-logo.png" alt="SAGASU" class="orientation-logo">
+    <i data-lucide="smartphone" class="orientation-phone" aria-hidden="true"></i>
+    <h2 id="orientation-title">Rotate your phone</h2>
+    <button id="orientation-fullscreen"><i data-lucide="maximize"></i> Fullscreen</button>
+    <p id="orientation-status" role="status" aria-live="polite"></p>
+  </section>
+  <section id="startup" class="startup" data-phase="prompt" aria-label="Welcome to Sagasu">
+    <img class="startup-scene" src="../game%20art%20from%20illustrator/background%20before%20game.jpg" alt="Sagasu relaxing on his sofa">
+    <video id="opening-video" class="opening-video" src="../game%20art%20from%20illustrator/openingnew.mp4" muted playsinline preload="auto" aria-label="Sagasu opening"></video>
+  <div class="startup-prompt">
+    <img src="assets/ui/sagasu-logo.png" alt="SAGASU" class="startup-prompt-logo">
+    <button id="start-opening" class="start-opening"><i data-lucide="play"></i> Tap to Start</button>
+  </div>
+    <div class="startup-content"><p class="startup-eyebrow">POCKET COMPANION</p><h1><img class="sagasu-wordmark" src="assets/ui/sagasu-logo.png" alt="SAGASU"></h1>
+      <div id="startup-menu" hidden><div class="startup-actions"><button id="start-play"><i data-lucide="wallet"></i><span id="start-play-label">Connect Wallet</span></button><button id="start-guest"><i data-lucide="user-round"></i> Play as Guest</button></div><p id="startup-message" role="status" aria-live="polite"></p></div>
+    </div>
+  </section>
+  <noscript><p>Enable JavaScript to play Sagasu.</p></noscript>
+  <header class="header"><a class="brand" href="index.html"><img class="brand-avatar" src="../icon.png" alt=""><span><img class="sagasu-wordmark" src="assets/ui/sagasu-logo.png" alt="SAGASU"><small>POCKET COMPANION</small></span></a><div class="balances"><span class="balance"><i data-lucide="coins"></i><b id="coins">50</b></span><span class="balance water"><i data-lucide="droplets"></i><b id="water">10</b></span><button id="journal" title="Daily rewards" aria-label="Daily rewards" aria-expanded="false"><i data-lucide="trophy"></i></button><button id="shop" title="Shop" aria-label="Shop"><i data-lucide="shopping-bag"></i></button><button id="settings" title="Settings" aria-label="Settings"><i data-lucide="settings-2"></i></button></div></header>
+  <main>
+    <div class="pet-heading"><div><span class="eyebrow">PROFESSIONAL COUCH POTATO</span><h1>Sagasu's day off</h1></div><div class="level"><i data-lucide="star"></i><span id="level">LEVEL 1</span><progress id="xp" value="0" max="40" aria-label="Level progress"></progress><small id="xp-text">0 / 40 XP</small></div></div>
+    <section id="needs" class="needs" aria-label="Sagasu's needs"></section>
+    <div class="game-layout">
+      <section class="room-area">
+        <nav id="rooms" class="rooms" aria-label="Rooms"></nav>
+        <div id="stage" class="stage" data-room="living">
+          <div class="room-art" aria-hidden="true"></div><div id="night" class="night" hidden></div>
+          <span id="room-label" class="room-label">Living room</span><span id="mood" class="mood">Feeling okay</span>
+          <div id="poster" class="poster" hidden><img src="../website%20sagasu/assets/gallery/expressions/expression8.png" alt="Lucky Sagasu wall art"><span>DAY OFF</span></div>
+          <div id="rug" class="rug" hidden></div>
+          <div id="speech" class="speech" role="status">The couch called. I answered.</div>
+          <button id="pet" class="pet" aria-label="Pet Sagasu" title="Pet Sagasu"><img id="pet-art" src="../website%20sagasu/assets/gallery/poses/pose10.png" alt="Sagasu in his black hoodie" draggable="false"><span id="dirt" class="dirt" aria-hidden="true"><b></b><b></b><b></b></span><span id="foam" class="foam" hidden aria-hidden="true"></span><span id="sleep-z" class="sleep-z" hidden aria-hidden="true">z z Z</span></button>
+          <div id="shower" class="shower" hidden aria-hidden="true"></div><div id="floating" class="floating" aria-hidden="true"></div>
+          <button id="plant" class="plant" aria-label="Palm garden" title="Palm garden"><svg viewBox="0 0 120 160" aria-hidden="true"><path class="trunk" d="M58 117 Q72 82 62 37 L73 37 Q85 79 70 117Z"/><g class="leaves"><path d="M66 42 Q24 0 8 44 Q34 24 66 42Z"/><path d="M66 42 Q90 0 114 38 Q92 25 66 42Z"/><path d="M66 42 Q26 27 15 73 Q43 50 66 42Z"/><path d="M66 42 Q109 34 111 76 Q91 53 66 42Z"/><path d="M66 42 Q49 5 64 3 Q83 17 66 42Z"/></g><path class="pot" d="M38 115 L84 115 L77 151 L45 151Z"/><path class="pot-rim" d="M34 112 L87 112 L87 121 L34 121Z"/></svg><span id="plant-badge" class="plant-badge"></span></button>
+          <div id="play-hud" class="play-hud" hidden><b id="play-score">0 / 6</b><span id="play-time">15s</span><button id="stop-play" aria-label="Stop playtime" title="Stop playtime"><i data-lucide="x"></i></button></div>
+          <button id="toy" class="toy" hidden aria-label="Catch the ball" title="Catch the ball"><span></span></button>
+        </div>
+        <div class="room-bottom"><button id="previous-room" aria-label="Previous room" title="Previous room"><i data-lucide="chevron-left"></i></button><span id="room-number">01 / 04</span><button id="next-room" aria-label="Next room" title="Next room"><i data-lucide="chevron-right"></i></button><span class="saved" id="saved"><i data-lucide="check"></i> Saved on this device</span></div>
+      </section>
+      <aside>
+        <section class="care-menu"><p class="eyebrow">A LITTLE ATTENTION</p><h2 id="care-title">Sofa time</h2><p id="care-copy" class="care-copy">A scratch behind the ears. A little chaos. His kind of afternoon.</p><div id="pantry" class="pantry" hidden></div><div id="actions" class="actions"></div></section>
+        <div id="journal-panel" hidden><section class="daily"><div class="section-title"><h2>Today's little wins</h2><span id="daily-count">0 / 3</span></div><div id="tasks"></div></section>
+        <section class="garden-summary"><i data-lucide="sprout"></i><div><b>The little palm</b><span id="garden-status">Ready for a drink</span></div><button id="garden-button" aria-label="Open palm garden" title="Open palm garden"><i data-lucide="arrow-up-right"></i></button></section></div>
+      </aside>
+    </div>
+    <footer>SOFA CLUB / VOLUME 02 <span>Coins are in-game currency.</span><a href="../game.html">The Hunt <i data-lucide="arrow-up-right"></i></a></footer>
+  </main>
+  <dialog id="modal"><button id="close-modal" class="close" aria-label="Close"><i data-lucide="x"></i></button><div id="modal-content"></div></dialog>
+</body>
+</html>

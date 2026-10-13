@@ -1,0 +1,10 @@
+{
+  "name": "sagasu-wallet-build",
+  "private": true,
+  "scripts": { "build": "node build.cjs" },
+  "dependencies": {
+    "@solana-mobile/wallet-standard-mobile": "^0.5.0",
+    "@wallet-standard/app": "^1.1.0"
+  },
+  "devDependencies": { "esbuild": "^0.25.0" }
+}

@@ -1,0 +1,55 @@
+:root{--ui-icon-size:32px}
+.header button:is(#leaderboard-button,#journal,#shop,#account-button,#sound-button,#settings){position:relative;background:transparent;border:0;box-shadow:none;padding:5px;width:44px;height:44px;transform:none;flex-shrink:0}
+.header button:is(#leaderboard-button,#journal,#shop,#account-button,#sound-button,#settings):hover{background:#dff4e8;box-shadow:none;transform:none}
+.header button:is(#leaderboard-button,#journal,#shop,#account-button,#sound-button,#settings):active{filter:brightness(.85);transform:none}
+.header button:is(#leaderboard-button,#journal,#shop,#account-button,#sound-button,#settings)>svg{display:none}
+.header button:is(#leaderboard-button,#journal,#shop,#account-button,#sound-button,#settings)::before{content:'';display:block;width:var(--ui-icon-size);height:var(--ui-icon-size);background:var(--ui-image) center/contain no-repeat;flex-shrink:0}
+#leaderboard-button{--ui-image:url('assets/ui/trophy.png')}
+#journal{--ui-image:url('assets/ui/missions.png')}
+#shop{--ui-image:url('assets/ui/gift.png')}
+#settings{--ui-image:url('assets/ui/settings.png')}
+#account-button{--ui-image:url('assets/ui/profile.png')}
+#account-button[aria-pressed=true]{--ui-image:url('assets/ui/wallet.png')}
+#sound-button{--ui-image:url('assets/ui/sound.png')}
+#sound-button[aria-pressed=true]::after{content:'';position:absolute;width:27px;height:3px;background:#db4163;transform:rotate(-45deg);border:1px solid white;border-radius:2px}
+.balance:not(.water)>svg{display:none}
+.balance:not(.water)::before{content:'';width:30px;height:30px;flex-shrink:0;background:url('assets/ui/coin.png') center/contain no-repeat}
+.level>svg{display:none}
+.level::before{content:'';position:absolute;left:-18px;top:-17px;width:35px;height:35px;background:url('assets/ui/star.png') center/contain no-repeat}
+.startup-actions{flex-direction:column;align-items:center;gap:6px}
+.startup .startup-actions button{width:min(330px,100%);height:110px;min-width:0;min-height:0;padding:0;border:0;background-color:transparent;background-size:100% 100%;background-repeat:no-repeat;background-position:center;box-shadow:none;font-size:0;transform:none;transition:filter .15s}
+.startup-actions button>svg{display:none}
+#start-play-label{font-size:0}
+.startup .startup-actions button:hover,.startup .startup-actions button:active{transform:none;box-shadow:none}
+.startup .startup-actions #start-play{background-image:url('assets/ui/connect.png')}
+.startup .startup-actions #start-play:hover:not(:disabled),.startup .startup-actions #start-play:focus-visible{background-image:url('assets/ui/connect-hover.png')}
+.startup .startup-actions #start-play:active:not(:disabled){background-image:url('assets/ui/connect-pressed.png')}
+.startup .startup-actions #start-guest{background-color:transparent;background-image:url('assets/ui/guest.png');background-size:100% 100%;background-position:center;background-repeat:no-repeat}
+.startup .startup-actions #start-guest:hover:not(:disabled),.startup .startup-actions #start-guest:focus-visible{background-image:url('assets/ui/guest-hover.png')}
+.startup .startup-actions #start-guest:active:not(:disabled){background-image:url('assets/ui/guest-pressed.png')}
+.startup[data-has-account=true] .startup-actions #start-play{background-image:url('assets/ui/start.png')}
+.startup[data-has-account=true] .startup-actions #start-play:hover{filter:brightness(1.08)}
+.account-panel h2,.leaderboard-heading h2{display:flex;align-items:center;gap:12px}
+.account-panel h2::before,.leaderboard-heading h2::before{content:'';width:38px;height:38px;flex-shrink:0;background:url('assets/ui/profile.png') center/contain no-repeat}
+.account-panel[data-signed-in=true] h2::before{background-image:url('assets/ui/wallet.png')}
+.leaderboard-heading h2::before{background-image:url('assets/ui/trophy.png')}
+.leaderboard .is-you{background:#ccf6e5}
+.leaderboard tbody tr:nth-child(-n+3) td:first-child{font-weight:900;color:#977014}
+.task button{background:#ffe47b;color:#253735}
+@media(orientation:landscape) and (max-height:600px){
+  :root{--ui-icon-size:24px}
+  .header button:is(#leaderboard-button,#journal,#shop,#account-button,#sound-button,#settings){width:30px;height:30px;padding:3px}
+  .balance:not(.water)::before{width:20px;height:20px}
+  .startup-content{bottom:7%;left:3%;width:42%}
+  .startup h1{margin-bottom:6px}
+  .startup .startup-actions button{width:min(260px,100%);height:80px}
+  .startup-actions{gap:0}
+  #startup-message{margin-top:6px}
+}
+@media(max-width:600px) and (orientation:portrait){
+  :root{--ui-icon-size:23px}
+  .header button:is(#leaderboard-button,#journal,#shop,#account-button,#sound-button,#settings){width:28px;height:30px;padding:2px}
+  .balance:not(.water)::before{width:20px;height:20px}
+  .startup .startup-actions button{width:min(290px,100%);height:100px}
+  .account-panel h2,.leaderboard-heading h2{font-size:20px;gap:8px}
+}

@@ -1,0 +1,8 @@
+#orientation-gate{position:fixed;inset:0;z-index:2000;background:#b8e4df;color:#253735;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;padding:24px;text-align:center;overflow:auto}
+.orientation-logo{width:min(280px,85%);height:auto;aspect-ratio:3/1;object-fit:contain}
+#orientation-gate .orientation-phone{width:72px;height:72px;transform:rotate(90deg);stroke-width:1.8}
+#orientation-gate h2{font-size:24px}
+#orientation-fullscreen{background:#ffe175;min-height:48px;padding:12px 20px}
+#orientation-status{max-width:280px;font-size:14px;line-height:1.5;margin:0;min-height:42px}
+body.mobile-portrait{overflow:hidden}
+body.mobile-portrait #modal{visibility:hidden}

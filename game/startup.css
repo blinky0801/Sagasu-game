@@ -1,0 +1,31 @@
+body.booting{overflow:hidden}
+body.booting>.header,body.booting>main{visibility:hidden;pointer-events:none}
+.startup{position:fixed;inset:0;z-index:1000;overflow:hidden;background:#877f85;color:#fff;isolation:isolate}
+.startup[hidden]{display:none}
+.startup-scene{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:65% center;pointer-events:none}
+.opening-video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#ff9b01;z-index:3;pointer-events:none}
+.startup[data-phase=prompt] .opening-video{visibility:hidden}
+.startup-prompt{position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;padding:24px;background:#162b3526}
+.startup:not([data-phase=prompt]) .startup-prompt{display:none}
+.startup-prompt-logo{display:block;width:min(380px,70%);height:auto;max-height:32%;object-fit:contain;filter:drop-shadow(0 4px 2px #162b3566)}
+.startup .startup-prompt .start-opening{position:static;transform:none;display:flex;align-items:center;justify-content:center;gap:12px;max-width:100%}
+.startup .startup-prompt .start-opening:is(:hover,:active,:disabled){transform:none}
+.startup-content{position:absolute;z-index:2;bottom:15%;left:5%;width:43%;max-width:560px;text-align:center}
+.startup:not([data-phase=menu]) .startup-content{visibility:hidden}
+.start-opening{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:4;background:#ffe47b;color:#293f39;border:3px solid #293f39;border-radius:8px;box-shadow:0 5px 0 #293f39;padding:15px 24px;font-size:18px;min-height:56px;white-space:nowrap}
+.startup .start-opening:hover,.startup .start-opening:active,.startup .start-opening:disabled{transform:translate(-50%,-50%)}
+.startup-eyebrow{font-size:13px;font-weight:800;letter-spacing:0;color:#fff;text-shadow:0 2px 2px #293f39;margin:0 0 6px}
+.startup h1{font-size:72px;line-height:1.1;letter-spacing:0;margin:0 0 24px;color:#ffe47b;-webkit-text-stroke:2px #293f39;text-shadow:0 5px 0 #293f39}
+.startup-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:12px}
+.startup-actions button{display:flex;align-items:center;justify-content:center;gap:10px;min-height:52px;min-width:180px;padding:12px 18px;background:#ffe47b;border:3px solid #293f39;border-radius:8px;box-shadow:0 5px 0 #293f39;color:#293f39;font:inherit;font-weight:800;font-size:15px;letter-spacing:0}
+.startup-actions #start-guest{background:#b4ead3}
+.startup button:hover{filter:brightness(1.04)}
+.startup button:active{box-shadow:none}
+.startup button:focus-visible{outline:3px solid #fff;outline-offset:5px}
+.startup button:disabled{opacity:.65;cursor:wait}
+.startup svg{width:22px;height:22px;flex-shrink:0}
+#startup-message{font-size:13px;font-weight:700;line-height:1.5;text-shadow:0 2px 2px #293f39;margin:16px 0 0;overflow-wrap:anywhere}
+.startup.exiting{opacity:0;transition:opacity .3s ease;pointer-events:none}
+@media(max-height:500px) and (min-width:601px){.startup-content{bottom:11%;left:3%;width:44%}.startup h1{font-size:52px;margin-bottom:18px}.startup-actions button{min-width:150px;min-height:45px;padding:8px 12px;font-size:14px}}
+@media(max-width:600px){.startup-scene{object-position:70% center}.startup-content{top:7%;bottom:auto;left:7%;width:86%}.startup h1{font-size:48px}.startup-actions{flex-direction:column;align-items:center}.startup-actions button{width:min(250px,100%)}}
+@media(prefers-reduced-motion:reduce){.startup.exiting{transition:none}}

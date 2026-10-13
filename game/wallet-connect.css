@@ -1,0 +1,15 @@
+.wallet-picker{position:fixed;inset:0;width:min(420px,calc(100vw - 32px));max-height:calc(100svh - 24px);margin:auto;padding:24px;border:3px solid #293f39;border-radius:8px;background:#fffdf6;color:#293f39;box-sizing:border-box;overflow:auto;letter-spacing:0}
+.wallet-picker::backdrop{background:rgba(17,30,25,.65)}
+.wallet-picker h2{font-size:22px;line-height:1.3;margin:0 44px 20px 0}
+.wallet-picker-close{position:absolute;right:12px;top:12px;width:36px;height:36px;padding:7px;display:grid;place-items:center}
+.wallet-picker-list{display:grid;gap:12px}
+.wallet-picker-list button{display:flex;align-items:center;gap:14px;min-height:58px;width:100%;padding:10px 16px;background:#b6eec5;text-align:left;font-size:16px;white-space:normal}
+.wallet-picker-list button img,.wallet-picker-list button svg{width:32px;height:32px;flex-shrink:0;object-fit:contain}
+.wallet-picker-list button span{overflow-wrap:anywhere}
+.wallet-picker-list button:only-child{grid-column:1/-1}
+.wallet-picker button:focus-visible{outline:3px solid #159b85;outline-offset:3px}
+.wallet-picker-status{font-size:14px;line-height:1.5;margin:16px 0 0;overflow-wrap:anywhere}
+.wallet-picker-status:empty{display:none}
+.wallet-error-copy{display:inline-grid;place-items:center;width:30px;height:30px;padding:5px;margin-left:8px;vertical-align:middle;background:#b6eec5}
+.wallet-error-copy svg{width:16px;height:16px}
+@media(orientation:landscape) and (max-height:500px){.wallet-picker{padding:18px}.wallet-picker-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.wallet-picker-list button{font-size:14px;min-height:52px;padding:8px}.wallet-picker h2{margin-bottom:14px}}

@@ -1,0 +1,8 @@
+{
+  "name": "sagasu-game-source",
+  "version": "0.1.2",
+  "private": true,
+  "description": "Public source review for the SAGASU Solana Mobile beta; media excluded",
+  "engines": { "node": ">=22" },
+  "scripts": { "start": "node server.cjs", "test": "node tests/run.cjs" }
+}

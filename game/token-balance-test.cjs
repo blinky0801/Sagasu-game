@@ -1,0 +1,18 @@
+const assert=require('node:assert/strict');
+const fs=require('node:fs'),vm=require('node:vm');
+const context={window:{},fetch:()=>{throw Error('Unit tests must not call the network.');}};
+vm.runInNewContext(fs.readFileSync(require('node:path').join(__dirname,'token-balance.js'),'utf8'),context);
+const api=context.window.SagasuTokenBalance,owner='11111111111111111111111111111111',mint='mint';
+const row=(amount,id='a',decimals=6)=>({pubkey:id,account:{owner:'TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb',data:{parsed:{type:'account',info:{mint,owner,tokenAmount:{amount,decimals}}}}}});
+const result=value=>({context:{slot:123},value});
+assert.equal(api.total(result([row('9007199254740993000001'),row('1000000','b')]),owner,mint).display,'9,007,199,254,740,994.000001');
+assert.equal(api.total(result([]),owner,mint).display,'0');
+assert.equal(api.total(result([row('1')]),owner,mint).display,'0.000001');
+assert.throws(()=>api.total(result([row('1'),row('1')]),owner,mint));
+assert.throws(()=>api.total(result([row('1'),row('1','b',9)]),owner,mint));
+assert.throws(()=>api.total(result([row('1')]),owner,'wrong-mint'));
+assert.throws(()=>api.address({user_metadata:{address:owner,chain:'solana'}}));
+assert.equal(api.address({identities:[{provider:'web3',id:'web3:solana:'+owner,identity_id:'internal-uuid'}]}),owner);
+assert.throws(()=>api.address({identities:[{provider:'web3',identity_id:'web3:solana:'+owner}]}));
+assert.throws(()=>api.address({identities:[{provider:'web3',id:'web3:ethereum:'+owner}],user_metadata:{address:owner,chain:'solana'}}));
+console.log('PASS: exact BigInt aggregation, decimals, empty holdings, duplicate/malformed/mismatched accounts, verified identity required.');

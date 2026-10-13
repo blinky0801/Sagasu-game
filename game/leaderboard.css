@@ -1,0 +1,9 @@
+.leaderboard-heading{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.leaderboard-heading h2{font-size:22px}
+.leaderboard-heading button{width:36px;height:36px;padding:7px;flex-shrink:0}
+#weekly-summary{padding:12px 0;border-block:1px solid #ccdedb;font-size:12px;line-height:1.6}
+.leaderboard table{width:100%;border-collapse:collapse;font-size:12px}
+.leaderboard th,.leaderboard td{padding:11px 8px;border-bottom:1px solid #ccdedb;text-align:left;overflow-wrap:anywhere}
+.leaderboard th:last-child,.leaderboard td:last-child{text-align:right}
+.leaderboard .is-you{background:#dff3e8;font-weight:700}
+@media(max-width:420px){.header .balances{gap:4px}.header button{flex-shrink:0;width:27px}}
